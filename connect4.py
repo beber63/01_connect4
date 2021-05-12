@@ -1,32 +1,33 @@
-#connect 4 sign
-print(" _________________________________________________________________________________________ ")
-print("|                                                                                         |")
-print("|     ######   ######   #      #  #      #  #######   ######  #######         #      #    |")
-print("|    #        #      #  ##     #  ##     #  #        #           #            #      #    |")
-print("|    #        #      #  # #    #  # #    #  #        #           #            #      #    |")
-print("|    #        #      #  #  #   #  #  #   #  ####     #           #      ###   ########    |")
-print("|    #        #      #  #   #  #  #   #  #  #        #           #                   #    |")
-print("|    #        #      #  #    # #  #    # #  #        #           #                   #    |")
-print("|    #        #      #  #     ##  #     ##  #        #           #                   #    |")
-print("|     ######   ######   #      #  #      #  #######   ######     #                   #    |")
-print("|_________________________________________________________________________________________|\n\n\n")
+# import only system from os
+from os import system, name
 
-#connect 4 table creation, 3 line 1 + 1 line 3 to 8 between each underscored line
-line_1 = "   |           |           |           |           |           |           |           |   "
-line_2 = "   |___________|___________|___________|___________|___________|___________|___________|   "
-line_3 = " 6 |           |           |           |           |           |           |           |   "
-line_4 = " 5 |           |           |           |           |           |           |           |   "
-line_5 = " 4 |           |           |           |           |           |           |           |   "
-line_6 = " 3 |           |           |           |           |           |           |           |   "
-line_7 = " 2 |           |           |           |           |           |           |           |   "
-line_8 = " 1 |           |           |           |           |           |           |           |   "
-line_9 = "         A           B           C           D           E           F           G         "
+# import sleep to show output for some time period
+from time import sleep
 
-#X sign
-line_10 = "\\ /"
-line_11 = " X  "
-line_12 = "/ \\"
+# import functions and classes
+import connect4_functions
+import connect4_classes
 
-#O sign, line 20 repeated at the bottom
-line_20 = " ----- "
-line_21 = "|     |"
+# print out some text
+print("\n\n-------------------------------------------------------------------------------------------")
+print("----------------------------------------- WELCOME -----------------------------------------")
+print("-------------------------------------------------------------------------------------------\n\n")
+# sleep for 2 seconds after printing output
+sleep(2)
+
+# now call function we defined above
+clear()
+
+# call the connect 4 sign function
+connect4_sign()
+
+print("This is a 2 player game, please enter the name of the players.")
+player_1 = input("Player 1 name: ")
+player_2 = input("player 2 name: ")
+print("\n\n")
+print(player_1 + ", please choose your piece (x or o):")
+print("             \\ /            ---     ")
+print("              X      or   (     )   ")
+print("             / \\            ---     ")
+player_1_piece = input("  --->  ")
+clear()
