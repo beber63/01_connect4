@@ -1,9 +1,6 @@
 # import only system from os
 from os import system, name
 
-# import sleep to show output for some time period
-from time import sleep
-
 # clear function
 def clear():
     # for windows
@@ -12,6 +9,12 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
+# welcome function
+def welcome():
+    print("\n\n-------------------------------------------------------------------------------------------")
+    print("----------------------------------------- WELCOME -----------------------------------------")
+    print("-------------------------------------------------------------------------------------------\n\n")
 
 # connect 4 sign function
 def connect4_sign():
@@ -23,5 +26,5 @@ def connect4_sign():
     print("|    #        #      #  #  #   #  #  #   #  ####     #           #      ###   ########    |")
     print("|    #        #      #  #   #  #  #   #  #  #        #           #                   #    |")
     print("|    #        #      #  #    # #  #    # #  #        #           #                   #    |")
-    print("|     ######   ######   #      #  #      #  #######   ######     #                   #    |")
-    print("|_________________________________________________________________________________________|\n\n")
+    print("|     ######   ######   #     ##  #     ##  #######   ######     #                   #    |")
+    print("|_________________________________________________________________________________________|")
