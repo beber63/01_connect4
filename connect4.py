@@ -41,3 +41,7 @@ if player_1_piece.lower() == "x":
 
 c4f.clear()
 c4f.connect4_sign()
+
+for i in range(7):
+    for j in range(6):
+        pass
