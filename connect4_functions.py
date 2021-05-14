@@ -29,3 +29,8 @@ def connect4_sign():
     print("|     ######   ######   #     ##  #     ##  #######   ######     #                   #    |")
     print("|_________________________________________________________________________________________|")
     print("                                                                                  beber63 ©")
+
+def columncheck(my_dict, column, checker):
+    for i in range(6):
+        if my_dict.get(column) == []:
+            my_dict.get(column) = checker

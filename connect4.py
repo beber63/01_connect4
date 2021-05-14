@@ -25,23 +25,24 @@ print("\n\nThis is a 2 player game, please enter the name of the players.")
 player_1 = input("Player 1 name: ")
 player_2 = input("player 2 name: ")
 print("\n\n")
-print(player_1 + ", please choose your piece (x or o):")
+print(player_1 + ", please choose your checker type (x or o):")
 print("             \\ /            ---     ")
 print("              X      or   (     )   ")
 print("             / \\            ---     ")
-player_1_piece = input("  --->  ")
-while (player_1_piece.lower() != "x"):
-    if player_1_piece.lower() == "o":
-        player_2_piece = "x"
+player_1_checker = input("  --->  ")
+while (player_1_checker.lower() != "x"):
+    if player_1_checker.lower() == "o":
+        player_2_checker = "x"
         break
     print("Please choose x or o only")
-    player_1_piece = input("  --->  ")
-if player_1_piece.lower() == "x":
-    player_2_piece = "o"
+    player_1_checker = input("  --->  ")
+if player_1_checker.lower() == "x":
+    player_2_checker = "o"
 
 c4f.clear()
 c4f.connect4_sign()
 
-for i in range(7):
-    for j in range(6):
-        pass
+connect4_dict = {}
+for col in ["A", "B", "C", "D", "E", "F", "G"]:
+    connect4_dict[col] = [[] for j in range(6)]
+
