@@ -32,6 +32,8 @@ def connect4_sign():
 
 def columncheck(my_dict, column, checker):
     column_list = my_dict.get(column)
+    if column_list[5] != []:
+        print("Column full, please choose another one")
     for i in column_list:
         if column_list[i] == []:
             column_list[i].append[checker]
