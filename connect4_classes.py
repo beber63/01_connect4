@@ -22,9 +22,9 @@ class Connect4Matrix:
     def filledcell(self, piece):
         if piece.lower() == "o":
             self.filled_cell = """|           |
-            |   -----   |
-            |  (     )  |
-            |   -----   |
+            |    ---    |
+            |   (   )   |
+            |    ---    |
             |___________|"""
         else:
             self.filled_cell = """|           |

@@ -31,6 +31,14 @@ def connect4_sign():
     print("                                                                                  beber63 ©")
 
 def columncheck(my_dict, column, checker):
-    for i in range(6):
-        if my_dict.get(column) == []:
-            my_dict.get(column) = checker
+    column_list = my_dict.get(column)
+    for i in column_list:
+        if column_list[i] == []:
+            column_list[i].append[checker]
+            #use function to add checker in the column
+            break
+    my_dict[column] = column_list
+    return my_dict
+
+def edit_column(line, column, checker):
+    pass
