@@ -1,6 +1,11 @@
 connect4_dict = {}
-for col in ["A", "B", "C", "D", "E", "F", "G"]:
+for col in range(7):
     connect4_dict[col] = [[] for j in range(6)]
+print(connect4_dict)
+temp = connect4_dict[2]
+print(temp)
+temp2 = temp[5]
+print(temp2)
 
 # creation of an empty dict to store all the lines in the connect 4 table
 connect4_table = {}
@@ -29,5 +34,5 @@ for i in range(3,31,5):
 connect4_table["line_0"] = "        A           B           C           D           E           F           G      "
 
 # print the table with the lines in inversed order
-for i in range(30,-1,-1):
-    print(connect4_table["line_" + str(i)])
+# for i in range(30,-1,-1):
+#     print(connect4_table["line_" + str(i)])

@@ -23,7 +23,7 @@ c4f.connect4_sign()
 # player initialization
 print("\n\nThis is a 2 player game, please enter the name of the players.")
 player_1 = input("Player 1 name: ")
-player_2 = input("player 2 name: ")
+player_2 = input("Player 2 name: ")
 print("\n\n")
 print(player_1 + ", please choose your checker type (x or o):")
 print("             \\ /            ---     ")
@@ -38,8 +38,6 @@ while (player_1_checker.lower() != "x"):
     player_1_checker = input("  --->  ")
 if player_1_checker.lower() == "x":
     player_2_checker = "o"
-
-c4f.clear()
 
 # connect 4 table 6*7 exemple:
 # line_30 = "  |           |           |           |           |           |           |           |"
@@ -69,7 +67,7 @@ c4f.clear()
 # line_6 = "  |___________|___________|___________|___________|___________|___________|___________|"
 # line_5 = "  |           |           |           |           |           |           |           |"
 # line_4 = "  |    ---    |    \\ /    |    ---    |           |           |           |           |"
-# line_3 = "1 |   ( . )   |     X     |   (   )   |           |           |           |           |"
+# line_3 = "1 |   (   )   |     X     |   (   )   |           |           |           |           |"
 # line_2 = "  |    ---    |    / \\    |    ---    |           |           |           |           |"
 # line_1 = "  |___________|___________|___________|___________|___________|___________|___________|"
 # line_0 = "        A           B           C           D           E           F           G      "
@@ -113,7 +111,11 @@ for col in range(7):
 
 # connect4_dict and connect4_table dictionaries have been initialized
 # clear the window and print the table with the players checkers
+c4f.clear()
 c4f.connect4_sign()
+for i in range(30,-1,-1):
+    print(connect4_table["line_" + str(i)])
+print("\n")
 print(player_1 + "'s checker is: " + player_1_checker)
 print(player_2 + "'s checker is: " + player_2_checker + "\n")
 
@@ -130,6 +132,22 @@ print(player_2 + "'s checker is: " + player_2_checker + "\n")
 # |___________|
 
 # while loop until one player wins
-while ...:
+count = 0
+while count < 1:
+    c4f.clear()
+    c4f.connect4_sign()
+    for i in range(30,-1,-1):
+        print(connect4_table["line_" + str(i)])
+    print("\n")
+    print(player_1 + "'s checker is: " + player_1_checker)
+    print(player_2 + "'s checker is: " + player_2_checker + "\n")
     c4f.play(player_1, player_1_checker, connect4_dict, connect4_table)
+
+    c4f.clear()
+    c4f.connect4_sign()
+    for i in range(30,-1,-1):
+        print(connect4_table["line_" + str(i)])
+    print("\n")
+    print(player_1 + "'s checker is: " + player_1_checker)
+    print(player_2 + "'s checker is: " + player_2_checker + "\n")
     c4f.play(player_2, player_2_checker, connect4_dict, connect4_table)
