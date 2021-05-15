@@ -3,7 +3,6 @@ from time import sleep
 
 # import functions and classes
 import connect4_functions as c4f
-import connect4_classes as c4c
 
 # clear screen
 c4f.clear()
