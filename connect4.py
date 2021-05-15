@@ -40,16 +40,8 @@ if player_1_checker.lower() == "x":
     player_2_checker = "o"
 
 c4f.clear()
-c4f.connect4_sign()
 
-# dictionnary with 7 keys (A - G) containing each 6 empty lists
-# this will allow us to keep track of game, each time a player plays a column the lowest
-# empty list will be filled with the corresponding checker
-connect4_dict = {}
-for col in ["A", "B", "C", "D", "E", "F", "G"]:
-    connect4_dict[col] = [[] for j in range(6)]
-
-# connect 4 table:
+# connect 4 table 6*7 exemple:
 # line_30 = "  |           |           |           |           |           |           |           |"
 # line_29 = "  |           |           |           |           |           |           |           |"
 # line_28 = "6 |           |           |           |           |           |           |           |"
@@ -71,14 +63,14 @@ for col in ["A", "B", "C", "D", "E", "F", "G"]:
 # line_12 = "  |           |           |           |           |           |           |           |"
 # line_11 = "  |___________|___________|___________|___________|___________|___________|___________|"
 # line_10 = "  |           |           |           |           |           |           |           |"
-# line_9 = "  |           |           |           |           |           |           |           |"
-# line_8 = "2 |           |           |           |           |           |           |           |"
-# line_7 = "  |           |           |           |           |           |           |           |"
+# line_9 = "  |    \\ /    |    ---    |           |           |           |           |           |"
+# line_8 = "2 |     X     |   (   )   |           |           |           |           |           |"
+# line_7 = "  |    / \\    |    ---    |           |           |           |           |           |"
 # line_6 = "  |___________|___________|___________|___________|___________|___________|___________|"
 # line_5 = "  |           |           |           |           |           |           |           |"
-# line_4 = "  |           |           |           |           |           |           |           |"
-# line_3 = "1 |           |           |           |           |           |           |           |"
-# line_2 = "  |           |           |           |           |           |           |           |"
+# line_4 = "  |    ---    |    \\ /    |    ---    |           |           |           |           |"
+# line_3 = "1 |   ( . )   |     X     |   (   )   |           |           |           |           |"
+# line_2 = "  |    ---    |    / \\    |    ---    |           |           |           |           |"
 # line_1 = "  |___________|___________|___________|___________|___________|___________|___________|"
 # line_0 = "        A           B           C           D           E           F           G      "
 
@@ -111,3 +103,33 @@ connect4_table["line_0"] = "        A           B           C           D       
 # print the table with the lines in inversed order
 # for i in range(30,-1,-1):
 #     print(connect4_table["line_" + str(i)])
+
+# dictionnary with 7 keys (A - G) containing each 6 empty lists
+# this will allow us to keep track of game, each time a player plays a column the lowest
+# empty list will be filled with the corresponding checker
+connect4_dict = {}
+for col in range(7):
+    connect4_dict[col] = [[] for j in range(6)]
+
+# connect4_dict and connect4_table dictionaries have been initialized
+# clear the window and print the table with the players checkers
+c4f.connect4_sign()
+print(player_1 + "'s checker is: " + player_1_checker)
+print(player_2 + "'s checker is: " + player_2_checker + "\n")
+
+# |           |
+# |    ---    |
+# |   (   )   |
+# |    ---    |
+# |___________|
+
+# |           |
+# |    \\ /    |
+# |     X     |
+# |    / \\    |
+# |___________|
+
+# while loop until one player wins
+while ...:
+    c4f.play(player_1, player_1_checker, connect4_dict, connect4_table)
+    c4f.play(player_2, player_2_checker, connect4_dict, connect4_table)
