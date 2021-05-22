@@ -4,16 +4,9 @@ from time import sleep
 # import functions and classes
 import connect4_functions as c4f
 
-# clear screen
-c4f.clear()
-
 # print welcome function
 c4f.welcome()
-
-# sleep for 2 seconds after printing output
 sleep(2)
-
-# now call function we defined above
 c4f.clear()
 
 # call the connect 4 sign function
@@ -107,16 +100,6 @@ connect4_table["line_0"] = "        A           B           C           D       
 connect4_dict = {}
 for col in range(7):
     connect4_dict[col] = [[] for j in range(6)]
-
-# connect4_dict and connect4_table dictionaries have been initialized
-# clear the window and print the table with the players checkers
-c4f.clear()
-c4f.connect4_sign()
-for i in range(30,-1,-1):
-    print(connect4_table["line_" + str(i)])
-print("\n")
-print(player_1 + "'s checker is: " + player_1_checker)
-print(player_2 + "'s checker is: " + player_2_checker + "\n")
 
 # |           |
 # |    ---    |

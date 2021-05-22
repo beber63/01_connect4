@@ -1,7 +1,6 @@
-# import only system from os
 from os import system, name
 
-# clear function
+# clear function definition
 def clear():
     # for windows
     if name == 'nt':
