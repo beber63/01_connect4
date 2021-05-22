@@ -1,5 +1,7 @@
 # import class file
 import connect4_v2_0_classes as c4c
+# import function file
+import connect4_functions as c4f
 
 # welcome variable
 welcome = """\n\n-------------------------------------------------------------------------------------------
