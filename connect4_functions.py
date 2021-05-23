@@ -9,20 +9,6 @@ def clear():
     else:
         _ = system('clear')
 
-# connect 4 sign function
-def connect4_sign():
-    print(" _________________________________________________________________________________________ ")
-    print("|                                                                                         |")
-    print("|     ######   ######   #      #  #      #  #######   ######  #######         #      #    |")
-    print("|    #        #      #  ##     #  ##     #  #        #           #            #      #    |")
-    print("|    #        #      #  # #    #  # #    #  #        #           #            #      #    |")
-    print("|    #        #      #  #  #   #  #  #   #  ####     #           #      ###   ########    |")
-    print("|    #        #      #  #   #  #  #   #  #  #        #           #                   #    |")
-    print("|    #        #      #  #    # #  #    # #  #        #           #                   #    |")
-    print("|     ######   ######   #     ##  #     ##  #######   ######     #                   #    |")
-    print("|_________________________________________________________________________________________|")
-    print("                                                                                  beber63 ©")
-
 def edit_column(my_dict_table, line, column, checker):
     string1 = my_dict_table["line_" + str(line + 1)]
     string2 = my_dict_table["line_" + str(line)]
