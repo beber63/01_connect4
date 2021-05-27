@@ -596,10 +596,13 @@ alphabet_dict = {"line_1_A": "    #    ",
                  "line_7_Z": " ####### "}
 
 def sign_editor(word):
+    print(" " + "_" * 9 * len(word) + " ")
+    print("|" + " " * 9 * len(word) + "|")
     for i in range(1, 8):
-        word_to_print=""
+        word_to_print="|"
         for letter in word.upper():
             word_to_print += alphabet_dict["line_" + str(i) + "_" + letter]
-        print(word_to_print)
+        print(word_to_print + "|")
+    print("|" + "_" * 9 * len(word) + "|")
 
 sign_editor("beber")
