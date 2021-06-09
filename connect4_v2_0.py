@@ -14,7 +14,7 @@ welcome = """
 -------------------------------------------------------------------------------------------\n\n"""
 print(welcome)
 
-# gane initialization
+# game initialization
 print("What game would you like to play?\n\n")
 
 # user have to choose which variation of connect4 to play
@@ -25,7 +25,21 @@ while selection not in range(len(list_of_games)):
         print(str(list_of_games.index(game) + 1) + "- " + game)
     selection = int(input("\n>> ")) - 1
 
-player_1, player_2 = c4f.player_initialization()
+# creation of the instances player
+print("\n\nThis is a 2 player game:")
+player_1_name = input("Player 1 name: ")
+player_1_checker = input(player_1_name + ", please choose your checker (X or O):")
+while player_1_checker.lower() != "x":
+    if player_1_checker.lower() == "o":
+        player_2_checker = "x"
+        break
+    print("Please choose X or O only")
+    player_1_checker = input("  --->  ")
+if player_1_checker.lower() == "x":
+    player_2_checker = "o"
+player_1 = c4c.Player(player_1_name, player_1_checker)
+player_2_name = input("Player 2 name: ")
+player_2 = c4c.Player(player_2_name, player_2_checker)
 
 # once the user chose the game the specific game sequence starts
 if selection == 0:
@@ -47,13 +61,11 @@ one's own discs. Connect Four is a solved game. The first player can always win 
     columns = input("Choose the number of columns (4 to 7) -> ")
 
     # initialize the connect4 table
-    connect_4 = c4c.TableConnect4(lines, columns)
-    table_connect_4 = connect_4.table()
-    table_connect_4_dict = connect_4.dict()
+    connect_4 = c4c.GameTable(lines, columns)
 
     # while loop to keep the users playing as long as the winning condition is not met (add a break if the board
     # is filled and nobody won)
-    while (x_win == False) or (o_win ==  False):
+    while (c4c.GameTable.x_win == False) or (c4c.GameTable.o_win ==  False):
 
         # loop the 2 players
         player_list = [player_1, player_2]
@@ -62,19 +74,17 @@ one's own discs. Connect Four is a solved game. The first player can always win 
             c4f.clear()
 
             # call for the connect4 sign
-            c4f.connect4_sign()
+            connect_4.sign_editor(list_of_games[selection])
 
             # print the connect4 table
-            for i in range(lines * 5,-1,-1):
-                print(table_connect_4["line_" + str(i)])
-            print("\n")
+            connect_4.table_printer()
 
             # print a reminder of each user's checker
             print(player_list[0] + "'s checker is: " + player_1.checker)
             print(player_list[1] + "'s checker is: " + player_2.checker + "\n")
 
             # player_1 plays
-            c4f.play(player, player.checker, table_connect_4, table_connect_4_dict)
+            c4f.play(player, player.checker, connect_4, connect_4.table)
 
     # print the name of the player who won the game
     if x_win == True:

@@ -290,6 +290,9 @@ class GameTable:
                     "line_5_9": "       # ",
                     "line_6_9": "       # ",
                     "line_7_9": "  #####  "}
+    
+    x_win = False
+    o_win = False
 
     def __init__(self, lines, columns, name):
         self.lines = int(lines)
@@ -298,13 +301,22 @@ class GameTable:
 
         # initialize dicts as instance variables
         self.dict = {}
-        self.table = {}
-
-    def dict(self):
-        # make a normal dictionnary that represents the board
-        # easier to check the winning conditions and to drive the graphical version of the board 
         for col in range(self.columns):
             self.dict[col] = [[] for j in range(self.lines)]
+        self.table = {}
+
+    def sign_editor(self, word):
+        print(" " + "_" * 9 * len(word) + " ")
+        print("|" + " " * 9 * len(word) + "|")
+        for i in range(1, 8):
+            word_to_print="|"
+            for char in word.upper():
+                if char.isnumeric() == True:
+                    word_to_print += GameTable.numbers_dict["line_" + str(i) + "_" + char]
+                else:
+                    word_to_print += GameTable.alphabet_dict["line_" + str(i) + "_" + char]
+            print(word_to_print + "|")
+        print("|" + "_" * 9 * len(word) + "|")
 
     def table_printer(self):
         # store the bottom line of each row
@@ -346,10 +358,69 @@ class GameTable:
         # print the last line of the frame    
         print("|" + "_" * 9 * len(self.name) + "|")
 
-class Popout(GameTable):
-    pass
+    def vertical_win(self):
+        for i in range(self.columns):
+            count_x = 0
+            count_o = 0
+            for j in range(self.lines - 4 + 1):
+                if self.dict.get(j)[i] == "x":
+                    count_x += 1
+                if self.dict.get(j)[i] == "o":
+                    count_o += 1
+            if count_x == 4:
+                GameTable.x_win = True
+            if count_o == 4:
+                GameTable.o_win = True
 
+    def diag_right_win(self):
+        for i in range(self.columns - 4 + 1):
+            count_x = 0
+            count_o = 0
+            for j in range(self.lines - 4 + 1):
+                for k in range(4):
+                    if self.dict.get(i+k)[j+k] == "x":
+                        count_x += 1
+                    if self.dict.get(i+k)[j+k] == "o":
+                        count_o += 1
+                    if count_x == 4:
+                        GameTable.x_win = True
+                    if count_o == 4:
+                        GameTable.o_win = True
+
+    def diag_left_win(self):
+        for i in range(self.columns - 4, self.columns):
+            count_x = 0
+            count_o = 0
+            for j in range(self.lines - 4 + 1):
+                for k in range(4):
+                    if self.dict.get(i-k)[j-k] == "x":
+                        count_x += 1
+                    if self.dict.get(i-k)[j-k] == "o":
+                        count_o += 1
+                    if count_x == 4:
+                        GameTable.x_win = True
+                    if count_o == 4:
+                        GameTable.o_win = True
+
+    def horizontal_win(self):
+        for j in range(self.lines):
+            count_x = 0
+            count_o = 0
+            for i in range(self.columns - 4 + 1):
+                if self.dict.get(i)[j] == "x":
+                    count_x += 1
+                if self.dict.get(i)[j] == "o":
+                    count_o += 1
+            if count_x == 4:
+                GameTable.x_win = True
+            if count_o == 4:
+                GameTable.o_win = True
+                
+    
 class Player:
     def __init__(self, name, checker):
         self.name = name
         self.checker = checker
+
+class Popout(GameTable):
+    pass
