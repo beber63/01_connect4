@@ -294,6 +294,8 @@ class GameTable:
     x_win = False
     o_win = False
 
+    table_print_count = 0
+
     def __init__(self, lines, columns, name):
         self.lines = int(lines)
         self.columns = max(int(columns), len(GameTable.alphabet_str))
@@ -318,7 +320,36 @@ class GameTable:
             print(word_to_print + "|")
         print("|" + "_" * 9 * len(word) + "|")
 
-    def table_printer(self):
+    def edit_column(self, line = 0, column = 0, checker = "a"):
+        string1 = self.table["line_" + str(line + 1)]
+        string2 = self.table["line_" + str(line)]
+        string3 = self.table["line_" + str(line - 1)]
+        if checker == "x":
+            if column == 0:
+                string1 = string1[:7] + "\\ / " + string1[11:]
+                string2 = string2[:8] + "X" + string2[9:]
+                string3 = string3[:7] + "/ \\ " + string3[11:]
+            else:
+                col = (column - 1) * 12 + 20
+                string1 = string1[:col - 1] + "\\ / " + string1[col + 3:]
+                string2 = string2[:col] + "X" + string2[col + 1:]
+                string3 = string3[:col - 1] + "/ \\ " + string3[col + 3:]
+        elif checker == "o":
+            if column == 0:
+                string1 = string1[:7] + "---" + string1[10:]
+                string2 = string2[:6] + "(   )" + string2[11:]
+                string3 = string3[:7] + "---" + string3[10:]
+            else:
+                col = (column - 1) * 12 + 20
+                string1 = string1[:col - 1] + "---" + string1[col + 2:]
+                string2 = string2[:col - 2] + "(   )" + string2[col + 3:]
+                string3 = string3[:col - 1] + "---" + string3[col + 2:]
+        self.table["line_" + str(line + 1)] = string1
+        self.table["line_" + str(line)] = string2
+        self.table["line_" + str(line - 1)] = string3
+
+    def table_editor(self):
+        GameTable.table_print_count += 1 # si different de 0 la partie a commencer
         # store the bottom line of each row
         for i in range(1, self.lines * 5 + 1 ,5):
             temp_line = "line_" + str(i)
@@ -342,6 +373,7 @@ class GameTable:
         # add the botom line to add a letter to the corresponding column
         for i in range(1, self.columns):
             self.table["line_0"] = "        A      " + "      " + GameTable.alphabet_str[i] + "      "
+        print(self.table)
 
     def sign_printer(self):
         # print the first lines of the frame
@@ -357,6 +389,24 @@ class GameTable:
 
         # print the last line of the frame    
         print("|" + "_" * 9 * len(self.name) + "|")
+        
+    def columncheck(self, column, checker):
+        column_list = self.dict[column]
+        for i in range(len(column_list)):
+            if column_list[i] == []:
+                column_list[i].append(checker)
+                line_in_table = 3 + i * 5
+                self.edit_column(self.table, line_in_table, column, checker)
+                break
+        self.dict[column] = column_list
+
+    def play(self, player):
+        col = input(player + " please choose a column: ")
+        col_num = GameTable.alphabet_string.find(col.upper())
+        while self.dict[col_num][5] != []:
+            col = input("Column full, please choose another one: ")
+            col_num = GameTable.alphabet_str.find(col.upper())
+        self.columncheck(col_num, player.checker)
 
     def vertical_win(self):
         for i in range(self.columns):

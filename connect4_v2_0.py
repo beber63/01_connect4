@@ -2,10 +2,17 @@
 import connect4_v2_0_classes as c4c
 # import function file
 import connect4_functions as c4f
+# import os functions to clear terminal when need be
+from os import system, name
 
-# creation of the boolean variable to turn True if a wiining condition is met
-x_win = False
-o_win = False
+# clear function definition
+def clear():
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 # welcome variable
 welcome = """
@@ -18,7 +25,7 @@ print(welcome)
 print("What game would you like to play?\n\n")
 
 # user have to choose which variation of connect4 to play
-list_of_games = ["Connect-4", "PopOut", "Pop 10", "5-in-a-row", "Power Up"]
+list_of_games = ["Connect 4", "PopOut", "Pop 10", "5 in a row", "Power Up"]
 selection = -1
 while selection not in range(len(list_of_games)):
     for game in list_of_games:
@@ -45,7 +52,7 @@ player_2 = c4c.Player(player_2_name, player_2_checker)
 if selection == 0:
 
     # clear the terminal
-    c4f.clear()
+    clear()
 
     # print the definition of the game
     print("""
@@ -71,13 +78,13 @@ one's own discs. Connect Four is a solved game. The first player can always win 
         player_list = [player_1, player_2]
         for player in player_list:
             # clear the terminal
-            c4f.clear()
+            clear()
 
             # call for the connect4 sign
             connect_4.sign_editor(list_of_games[selection])
 
             # print the connect4 table
-            connect_4.table_printer()
+            connect_4.table_editor()
 
             # print a reminder of each user's checker
             print(player_list[0] + "'s checker is: " + player_1.checker)
@@ -87,12 +94,12 @@ one's own discs. Connect Four is a solved game. The first player can always win 
             c4f.play(player, player.checker, connect_4, connect_4.table)
 
     # print the name of the player who won the game
-    if x_win == True:
+    if c4c.GameTable.x_win == True:
         if player_1.checker == "x":
             print("Congratulation" + player_1.name + "!")
         else:
             print("Congratulation" + player_2.name + "!")
-    else:
+    elif c4c.GameTable.o_win == True:
         if player_1.checker == "o":
             print("Congratulation" + player_1.name + "!")
         else:
@@ -101,7 +108,7 @@ one's own discs. Connect Four is a solved game. The first player can always win 
 if selection == 1:
 
     # clear the terminal
-    c4f.clear()
+    clear()
 
     # print the definition of the game
     print("""
@@ -115,7 +122,7 @@ The first player to connect four of their discs horizontally, vertically, or dia
 if selection == 2:
 
     # clear the terminal
-    c4f.clear()
+    clear()
 
     # print the definition of the game
     print("""
@@ -131,7 +138,7 @@ switching to the other player. The first player to set aside ten discs of his or
 if selection == 3:
 
     # clear the terminal
-    c4f.clear()
+    clear()
 
     # print the definition of the game
     print("""
@@ -144,7 +151,7 @@ represent twelve game pieces already played, before the start of a game.\n\n""")
 if selection == 4:
 
     # clear the terminal
-    c4f.clear()
+    clear()
 
     # print the definition of the game
     print("""
